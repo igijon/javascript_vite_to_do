@@ -9,6 +9,11 @@ export class TodoList { //Uso upper camel case porque son clases
     eliminarTodo(id) {
     }
     marcarCompletado(id) {
+        for( const todo of this.todo ){
+            if (todo.id == id) { //en mi array lo tengo como numérico y al tomarlo del HTML es string, por eso dos iguales
+                todo.completado = !todo.completado;
+            }
+        }
     }
     eliminarCompletados() {
     }
