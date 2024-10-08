@@ -3,7 +3,7 @@ import { todoList } from "../../main";
 
 const divTodoList = document.querySelector('.todo-list');
 const txtInput = document.querySelector('.new-todo');
-
+const btnBorrar = document.querySelector('.clear-completed');
 
 export const crearTodoHtml = (todo) => {
     const htmlTodo = `
@@ -47,5 +47,20 @@ divTodoList.addEventListener('click', (event) => {
         todoList.eliminarTodo( todoId );
         //La referencia html también hay que borrarla
         divTodoList.removeChild( todoElemento );
+    }
+});
+
+btnBorrar.addEventListener('click', () => {
+    todoList.eliminarCompletados();
+    //Siguen estando en el HTML
+    //Eliminaré de abajo hacia arriba para que se mantengan los 
+    //índices
+    for ( let i = divTodoList.children.length-1; i >= 0; i--) {
+        const elemento = divTodoList.children[i];
+        //Compruebo si están completados o no.
+        //Puedo mirar si la clase del li tiene el completed
+        if( elemento.classList.contains('completed')){
+            divTodoList.removeChild(elemento);
+        }
     }
 });
