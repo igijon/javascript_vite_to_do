@@ -7,6 +7,8 @@ export class TodoList { //Uso upper camel case porque son clases
         this.todo.push(todo);
     }
     eliminarTodo(id) {
+        this.todo = this.todo.filter( todo => todo.id != id ); //Si pongo !== comparo también si son del mismo tipo
+        //Devuelve el array excluyendo el id.
     }
     marcarCompletado(id) {
         for( const todo of this.todo ){

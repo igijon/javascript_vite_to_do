@@ -39,9 +39,13 @@ divTodoList.addEventListener('click', (event) => {
     const todoElemento = event.target.parentElement.parentElement; //Obtengo el li con el id del elemento
     const todoId = todoElemento.getAttribute('data-id');
     
-    
     if ( nombreElemento.includes('input') ) {//click en el check
         todoList.marcarCompletado(todoId);
         todoElemento.classList.toggle('completed');
+    } else if (nombreElemento.includes('button')){
+        //Hay que borrar el todo
+        todoList.eliminarTodo( todoId );
+        //La referencia html también hay que borrarla
+        divTodoList.removeChild( todoElemento );
     }
 });
