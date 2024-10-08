@@ -1,3 +1,5 @@
+import { Todo } from "./todo.class";
+
 export class TodoList { //Uso upper camel case porque son clases
     
     constructor() {
@@ -34,6 +36,8 @@ export class TodoList { //Uso upper camel case porque son clases
         this.todo = (localStorage.getItem('todo')) 
                         ? JSON.parse(localStorage.getItem('todo'))
                         :[];
+        //this.todo = this.todo.map(obj => Todo.fromJSON(obj));
+        this.todo = this.todo.map(Todo.fromJSON);
     }
     
 }
